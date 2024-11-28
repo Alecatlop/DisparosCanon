@@ -28,17 +28,24 @@ public class Botonverde : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Vector3 localizacion = posicion.transform.position;
-        //Vector3 rotacion = posicion.transform.rotation
-        //Instantiate(contador, localizacion, );
+        // Disparar Bala
+        Vector3 inicio = posicion.transform.position;
         Rigidbody rb = bala.GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(0, fuerza));
 
+        if(numbalas > 0)
+        {
+            Instantiate(bala, inicio, Quaternion.identity);
+            rb.AddForce(new Vector3(fuerza, 0));
+        }
+        
+
+        // Cambio de color del cañon
         float num1 = Random.Range(0f, 1f);
         float num2 = Random.Range(0f, 1f);
         float num3 = Random.Range(0f, 1f);
         cañon.GetComponent<Renderer>().material.color = new Color(num1, num2, num3);
 
+        // Contador de Balas
         if (numbalas > 0)
         {
             numbalas--;
@@ -47,8 +54,14 @@ public class Botonverde : MonoBehaviour
             {
                 contador.text = numbalas + " balas";
             }
-            else contador.text = numbalas + " bala";
+            else if (numbalas == 1)
+            {
+               contador.text = numbalas + " bala";
+            }
+            else if (numbalas < 1)
+            {
+                contador.text = "Sin Munición";
+            }
         }
-
     }
 }
