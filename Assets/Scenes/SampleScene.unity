@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96eec2cc432cfb449d2d6c477b72146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 5
+  fuerza: 50
   contador: {fileID: 1136388488}
 --- !u!1 &1136388486
 GameObject:

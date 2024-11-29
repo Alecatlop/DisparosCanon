@@ -12,7 +12,6 @@ public class Diana : MonoBehaviour
     void Start()
     {
         colordiana = GetComponent<Renderer>();
-        
     }
 
     // Update is called once per frame
@@ -20,12 +19,13 @@ public class Diana : MonoBehaviour
     {
         if (vidas < 1)
         {
-            transform.Rotate(0, 0, 90 * Time.deltaTime);
+            this.gameObject.transform.Rotate(0, 0, 90 * Time.deltaTime);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
             if (vidas == 0)
             {
                 Destroy(gameObject);

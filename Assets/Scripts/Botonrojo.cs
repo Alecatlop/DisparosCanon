@@ -21,8 +21,12 @@ public class Botonrojo : MonoBehaviour
     {
         for (int a = 0; a < balas.Length; a++)
         {
-            //Destroy(balas(a));
+            Destroy(balas[a]);
         }
-        
     }
+
+    
+    // static void y variables para acceder desde otros scripts al manager static int balas; en mouseGameManager.ResetearBalas();   llamar a función static public voi resetear balas(){
+    // acript calcular distancia balacañonpara cambiuar color en el disparo on trigger exit
 }
+

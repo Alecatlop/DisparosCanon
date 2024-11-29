@@ -8,8 +8,8 @@ public class Botonverde : MonoBehaviour
     GameObject bala;
     public int fuerza;
     GameObject cañon;
-    public TextMeshProUGUI contador;
-    int numbalas = 10;
+   // public TextMeshProUGUI contador;
+    //int numbalas = 10;
     GameObject posicion;
     int contadorBalas = 0;
 
@@ -64,6 +64,7 @@ public class Botonverde : MonoBehaviour
             else if (numbalas < 1)
             {
                 contador.text = "Sin Munición";
+                
             }
         }
     }
