@@ -11,6 +11,7 @@ public class Botonverde : MonoBehaviour
     public TextMeshProUGUI contador;
     int numbalas = 10;
     GameObject posicion;
+    int contadorBalas = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,9 @@ public class Botonverde : MonoBehaviour
 
         if(numbalas > 0)
         {
-            Instantiate(bala, inicio, Quaternion.identity);
+            GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
+            balaInstancia.name = "Bala " + contadorBalas;
+            contadorBalas++;
             rb.AddForce(new Vector3(fuerza, 0));
         }
         

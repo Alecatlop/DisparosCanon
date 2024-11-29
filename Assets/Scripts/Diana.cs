@@ -12,37 +12,32 @@ public class Diana : MonoBehaviour
     void Start()
     {
         colordiana = GetComponent<Renderer>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (vidas < 1)
+        {
+            transform.Rotate(0, 0, 90 * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareTag("bala"))
-        {
-
             if (vidas == 0)
             {
-                print("Vidas " + vidas);
                 Destroy(gameObject);
             }
             else if (vidas == 1)
             {
-                print("Vidas " + vidas);
-                transform.Rotate(0, 0, 90 * Time.deltaTime);
                 vidas--;
             }
             else if (vidas == 2)
             {
                 colordiana.material.color = Color.white;
-                print("Vidas " + vidas);
                 vidas--;
             }
-        }
-
     }
 }
