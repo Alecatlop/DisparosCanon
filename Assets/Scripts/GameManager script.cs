@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameManagerscript : MonoBehaviour
 {
-    static public TextMeshProUGUI contador;
-    static int numbalas = 10;
+    //static public TextMeshProUGUI contador;
+    //static int numbalas = 10;
 
     // Start is called before the first frame update
     void Start()

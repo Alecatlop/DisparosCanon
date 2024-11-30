@@ -39,5 +39,6 @@ public class Diana : MonoBehaviour
                 colordiana.material.color = Color.white;
                 vidas--;
             }
+           
     }
 }

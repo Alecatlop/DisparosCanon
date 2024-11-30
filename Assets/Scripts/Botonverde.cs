@@ -5,19 +5,16 @@ using UnityEngine;
 
 public class Botonverde : MonoBehaviour
 {
-    GameObject bala;
+    public GameObject bala;
     public int fuerza;
-    GameObject cañon;
-   // public TextMeshProUGUI contador;
-    //int numbalas = 10;
+    public TextMeshProUGUI contador;
+    int numbalas = 0;
     GameObject posicion;
     int contadorBalas = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-       bala = GameObject.Find("Bala");
-       cañon = GameObject.Find("Cañon");
        posicion = GameObject.Find("Posicion");
     }
 
@@ -29,29 +26,23 @@ public class Botonverde : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Disparar Bala
+        //Disparar Bala
         Vector3 inicio = posicion.transform.position;
         Rigidbody rb = bala.GetComponent<Rigidbody>();
+        
 
-        if(numbalas > 0)
-        {
+        
+            
             GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
             balaInstancia.name = "Bala " + contadorBalas;
             contadorBalas++;
-            rb.AddForce(new Vector3(fuerza, 0));
-        }
+            rb.AddForce(new Vector3(0, 0, fuerza));
         
 
-        // Cambio de color del cañon
-        float num1 = Random.Range(0f, 1f);
-        float num2 = Random.Range(0f, 1f);
-        float num3 = Random.Range(0f, 1f);
-        cañon.GetComponent<Renderer>().material.color = new Color(num1, num2, num3);
 
-        // Contador de Balas
-        if (numbalas > 0)
-        {
-            numbalas--;
+        //Contador de Balas
+       
+            numbalas++;
 
             if (numbalas > 1)
             {
@@ -59,13 +50,14 @@ public class Botonverde : MonoBehaviour
             }
             else if (numbalas == 1)
             {
-               contador.text = numbalas + " bala";
+                contador.text = numbalas + " bala";
             }
             else if (numbalas < 1)
             {
-                contador.text = "Sin Munición";
-                
+                contador.text = "Sin balas";
+
             }
-        }
+        
     }
+
 }
