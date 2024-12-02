@@ -32,26 +32,45 @@ public class Botonblanco : MonoBehaviour
         // Disparar Bala
         Vector3 inicio = posicion.transform.position;
         Rigidbody rb = bala.GetComponent<Rigidbody>();
+        Renderer mat = bala.GetComponent<Renderer>();
         Vector3 tamaño = bala.transform.localScale;
         int fuerzarandom = Random.Range(5, 51);
+        int colorandom = Random.Range(1, 6);
         float escalarandom = Random.Range( 0.3f, 1.5f);
         
-        
-            bala.transform.localScale = tamaño * escalarandom;
-            GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
-            balaInstancia.name = "Bala " + contadorBalas;
-            contadorBalas++;
-            rb.AddForce(new Vector3(0, 0, fuerzarandom));
-        
+        bala.transform.localScale = tamaño * escalarandom;
+        GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
+        balaInstancia.name = "Bala " + contadorBalas;
+        contadorBalas++;
+        rb.AddForce(new Vector3(0, 0, fuerzarandom));
 
-        // resetear escala prefab 
+
+        if (colorandom == 1)
+        {
+            mat.sharedMaterial.color = Color.yellow;
+        }
+        else if (colorandom == 2)
+        {
+            mat.sharedMaterial.color = Color.red;
+        }
+        else if (colorandom == 3)
+        {
+            mat.sharedMaterial.color = Color.green;
+        }
+        else if (colorandom == 4)
+        {
+            mat.sharedMaterial.color = Color.blue;
+        }
+        else mat.sharedMaterial.color = Color.white;
+
+
+        // resetear escala y color del prefab
         if (escalarandom != 1)
         {
             bala.transform.localScale = new Vector3(1, 1, 1);
+            //mat.sharedMaterial.color = Color.black;
         }
         
-
-
         //Contador de Balas
        
             numbalas++;

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Botonrojo : MonoBehaviour
 {
+
     GameObject[] balas;
     // Start is called before the first frame update
     void Start()
     {
-        balas = GameObject.FindGameObjectsWithTag("bala");
+        
     }
 
     // Update is called once per frame
@@ -19,14 +20,18 @@ public class Botonrojo : MonoBehaviour
 
     private void OnMouseDown()
     {
-        for (int a = 0; a < balas.Length; a++)
+
+        balas = GameObject.FindGameObjectsWithTag("bala");
+
+        foreach (GameObject bala in balas)
         {
-            Destroy(balas[a]);
+            Destroy(bala);
+            print("destruido");
         }
     }
 
     
     // static void y variables para acceder desde otros scripts al manager static int balas; en mouseGameManager.ResetearBalas();   llamar a función static public voi resetear balas(){
-    // acript calcular distancia balacañonpara cambiuar color en el disparo on trigger exit
+   
 }
 
