@@ -6,6 +6,8 @@ public class Botonrojo : MonoBehaviour
 {
 
     GameObject[] balas;
+    public GameManagerscript game;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class Botonrojo : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
 
         balas = GameObject.FindGameObjectsWithTag("bala");
@@ -27,6 +29,8 @@ public class Botonrojo : MonoBehaviour
         {
             Destroy(bala);
         }
+
+        game.EliminarBalas();
     }
 
     

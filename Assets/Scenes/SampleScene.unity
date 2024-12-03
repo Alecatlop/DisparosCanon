@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bala: {fileID: 8308298172435430208, guid: e3e41e37ecbcfd94db04c1bc06a2d1fb, type: 3}
-  contador: {fileID: 1136388488}
+  game: {fileID: 814737518}
 --- !u!1 &683186497
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,8 +452,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.87, y: 1.82, z: 2.83}
-  m_Center: {x: 0.000000059604645, y: 0.92, z: 1.21}
+  m_Size: {x: 2.87, y: 2.87, z: 3.71}
+  m_Center: {x: 0.000000059604645, y: 1.36, z: 1.49}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 814737516}
   - component: {fileID: 814737515}
   - component: {fileID: 814737514}
+  - component: {fileID: 814737518}
   m_Layer: 0
   m_Name: Suelo
   m_TagString: Untagged
@@ -688,6 +689,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814737518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814737513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54ef19e27439e34aadbfbe9723c3bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contador: {fileID: 1136388488}
 --- !u!1 &857278421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bala: {fileID: 8308298172435430208, guid: e3e41e37ecbcfd94db04c1bc06a2d1fb, type: 3}
   fuerza: 250
-  contador: {fileID: 1136388488}
+  game: {fileID: 814737518}
 --- !u!1 &1136388486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db6dc7699e4489438e9cc5060f6e21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 814737518}
 --- !u!1 &1510440565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,8 +1478,8 @@ GameObject:
   - component: {fileID: 1957473818}
   - component: {fileID: 1957473817}
   - component: {fileID: 1957473816}
+  - component: {fileID: 1957473821}
   - component: {fileID: 1957473820}
-  - component: {fileID: 1957473819}
   m_Layer: 0
   m_Name: Diana
   m_TagString: Untagged
@@ -1539,18 +1554,6 @@ Transform:
   - {fileID: 1319170356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1957473819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957473814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505b64c9b9c7ac7428e45357e37b86db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1957473820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1566,12 +1569,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.46, y: 2.0000007, z: 1.45}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940699}
+--- !u!114 &1957473821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957473814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505b64c9b9c7ac7428e45357e37b86db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

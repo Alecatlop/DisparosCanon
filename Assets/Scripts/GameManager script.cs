@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameManagerscript : MonoBehaviour
 {
-    //static public TextMeshProUGUI contador;
-    //static int numbalas = 10;
+    public TextMeshProUGUI contador;
+    int numbalas = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,19 +20,18 @@ public class GameManagerscript : MonoBehaviour
 
     }
 
-    static public void EliminarBalas()
+    public void EliminarBalas()
     {
-
+        print("balas eliminadas");
+        numbalas = 0;
+        contador.text = numbalas + " balas";
     }
 
-    static public void IncBalas()
+    public void IncBalas()
     {
-
-    }
-
-    static public void DecBalas()
-    {
-
+        print("sumar balas");
+        numbalas++;
+        contador.text = numbalas + " balas";
     }
 
 

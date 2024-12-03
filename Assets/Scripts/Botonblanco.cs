@@ -7,11 +7,9 @@ using UnityEngine.UIElements;
 public class Botonblanco : MonoBehaviour
 {
     public GameObject bala;
-    public TextMeshProUGUI contador;
-    int numbalas = 0;
     GameObject posicion;
     int contadorBalas = 0;
-    
+    public GameManagerscript game;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +24,7 @@ public class Botonblanco : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         
         // Disparar Bala
@@ -35,7 +33,6 @@ public class Botonblanco : MonoBehaviour
         int fuerzarandom = Random.Range(100, 400);
         int colorandom = Random.Range(1, 6);
         float escalarandom = Random.Range( 0.3f, 2f);
-        
         bala.transform.localScale = tamaño * escalarandom;
         GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
         balaInstancia.name = "Bala " + contadorBalas;
@@ -67,24 +64,9 @@ public class Botonblanco : MonoBehaviour
         {
             bala.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
-        
-        //Contador de Balas
-       
-            numbalas++;
 
-            if (numbalas > 1)
-            {
-                contador.text = numbalas + " balas";
-            }
-            else if (numbalas == 1)
-            {
-                contador.text = numbalas + " bala";
-            }
-            else if (numbalas < 1)
-            {
-                contador.text = "Sin balas";
-            }
-        
+        //Contador de Balas
+        game.IncBalas();
 
     }
 }

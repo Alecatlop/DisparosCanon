@@ -17,12 +17,13 @@ public class Cañon : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        rd.material.color = Color.red;
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        
-        float num1 = Random.Range(0f, 1f);
-        float num2 = Random.Range(0f, 1f);
-        float num3 = Random.Range(0f, 1f);
-        rd.material.color = new Color(num1, num2, num3);
+        rd.material.color = Color.white;
     }
 }

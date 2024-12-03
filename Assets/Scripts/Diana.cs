@@ -23,22 +23,21 @@ public class Diana : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-
-            if (vidas == 0)
-            {
-                Destroy(gameObject);
-            }
-            else if (vidas == 1)
-            {
-                vidas--;
-            }
-            else if (vidas == 2)
-            {
-                colordiana.material.color = Color.white;
-                vidas--;
-            }
-           
+        if (vidas == 0)
+        {
+            Destroy(gameObject);
+        }
+        else if (vidas == 1)
+        {
+            vidas--;
+        }
+        else if (vidas == 2)
+        {
+            colordiana.material.color = Color.white;
+            vidas--;
+        }
     }
+   
 }
