@@ -41,7 +41,7 @@ public class Botonverde : MonoBehaviour
 
         
         balaInstancia.GetComponent<Renderer>().material.color = Color.black;
-        balaInstancia.GetComponent<Rigidbody>().AddForce(inicio * fuerza);
+        balaInstancia.GetComponent<Rigidbody>().AddForce(new Vector3 (0, fuerza, fuerza));
         
         
 

@@ -26,7 +26,6 @@ public class Botonrojo : MonoBehaviour
         foreach (GameObject bala in balas)
         {
             Destroy(bala);
-            print("destruido");
         }
     }
 
