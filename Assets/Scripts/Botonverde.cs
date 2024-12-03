@@ -11,7 +11,7 @@ public class Botonverde : MonoBehaviour
     int numbalas = 0;
     GameObject posicion;
     int contadorBalas = 0;
-    GameObject[] balas;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,20 +30,19 @@ public class Botonverde : MonoBehaviour
     {
         //Disparar Bala
 
-        balas = GameObject.FindGameObjectsWithTag("bala");
+        
         Vector3 inicio = posicion.transform.position;
-        Rigidbody rb = bala.GetComponent<Rigidbody>();
+        //Rigidbody rb = bala.GetComponent<Rigidbody>();
         
         GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
-        rb.AddForce(new Vector3(0, 0, fuerza));
+        //rb.AddForce(new Vector3(0, 0, fuerza));
 
-        foreach (GameObject balacolor in balas)
-        {
-            Renderer mat = balacolor.GetComponent<Renderer>();
-            mat.material.color = Color.black;
-        }
+        
+        balaInstancia.GetComponent<Renderer>().material.color = Color.black;
+        balaInstancia.GetComponent<Rigidbody>().AddForce(inicio * fuerza);
+        
         
 
         //Contador de Balas
