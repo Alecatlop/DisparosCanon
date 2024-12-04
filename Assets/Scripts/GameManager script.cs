@@ -22,17 +22,25 @@ public class GameManagerscript : MonoBehaviour
 
     public void EliminarBalas()
     {
-        print("balas eliminadas");
         numbalas = 0;
         contador.text = numbalas + " balas";
     }
 
     public void IncBalas()
     {
-        print("sumar balas");
         numbalas++;
         contador.text = numbalas + " balas";
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    GameObject colision = collision.gameObject;
+
+    //    if (colision.name == "nombre")
+    //    {
+    //        Destroy(colision);
+    //    }
+    //    else colision.SetActive(false);
+    //}
 
 }
