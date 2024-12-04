@@ -8,43 +8,37 @@ public class Botonverde : MonoBehaviour
     public GameObject bala;
     public int fuerza;
     GameObject posicion;
-    GameObject posicion2;
     int contadorBalas = 0;
     public GameManagerscript game;
     public Renderer cañon;
     GameObject balaInstancia;
     Vector3 inicio;
-    Vector3 fin;
     Vector3 balapos;
+    float limite = 2f;
+    float dist;
 
     // Start is called before the first frame update
     void Start()
     {
        posicion = GameObject.Find("Posicion");
-       posicion2 = GameObject.Find("Posicion2");
-       balapos = bala.transform.position;
        inicio = posicion.transform.position;
-       fin = posicion2.transform.position;
+       balapos = balaInstancia.transform.position;
+       dist = Vector3.Distance(inicio, balapos);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        float dist = Vector3.Distance(inicio, fin);
 
-        //if (balaInstancia != null)
-        //{
-            
-        //    cañon.material.color = Color.red;
-        //}
-        //else cañon.material.color = Color.white;
-
-        if(balapos != null)
+        if (balaInstancia != null)
         {
-            cañon.material.color = Color.red;
+            if (dist < limite)
+            {
+                cañon.material.color = Color.red;
+            }
+            else cañon.material.color = Color.white;
         }
-        else cañon.material.color = Color.white;
+        
     }
 
     public void OnMouseDown()
