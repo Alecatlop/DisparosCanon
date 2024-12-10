@@ -22,16 +22,19 @@ public class Botonverde : MonoBehaviour
     {
        posicion = GameObject.Find("Posicion");
        inicio = posicion.transform.position;
-       balapos = balaInstancia.transform.position;
-       dist = Vector3.Distance(inicio, balapos);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
+        
         if (balaInstancia != null)
         {
+            balapos = balaInstancia.transform.position;
+            dist = Vector3.Distance(inicio, balapos);
+
             if (dist < limite)
             {
                 cañon.material.color = Color.red;
@@ -45,7 +48,8 @@ public class Botonverde : MonoBehaviour
     {
 
         balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
-
+        balapos = balaInstancia.transform.position;
+        dist = Vector3.Distance(inicio, balapos);
 
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
