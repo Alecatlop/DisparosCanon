@@ -31,16 +31,9 @@ public class GameManagerscript : MonoBehaviour
         numbalas++;
         contador.text = numbalas + " balas";
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    GameObject colision = collision.gameObject;
-
-    //    if (colision.name == "nombre")
-    //    {
-    //        Destroy(colision);
-    //    }
-    //    else colision.SetActive(false);
-    //}
-
+    // doble click sobre variale nombre variable y boton derecho cmabiar nombre de todas
+    // lookAt funcon para objeto vacio cañon, collider limitar cruceta caiga no salir, 
+    // spawn, gamebojects vacios con la posicion de las crucetas mediante tag, en el random el maximo es la lista.length -1 porque se incluye, el transformposition de diana = al random
+    // con prefab diana instanciar y destruir cada vez que toque con una bala en una posicion aleatoria 
+    // los comandos usar inputsystem, 
 }
