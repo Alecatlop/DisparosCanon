@@ -8,11 +8,13 @@ public class Botonverde : MonoBehaviour
     public GameObject bala;
     public int fuerza;
     GameObject posicion;
+    GameObject cruceta;
     int contadorBalas = 0;
     public GameManagerscript game;
     public Renderer cañon;
     GameObject balaInstancia;
     Vector3 inicio;
+    Vector3 fin;
     Vector3 balapos;
     float limite = 2f;
     float dist;
@@ -21,8 +23,9 @@ public class Botonverde : MonoBehaviour
     void Start()
     {
        posicion = GameObject.Find("Posicion");
+       cruceta = GameObject.Find("cruceta");
        inicio = posicion.transform.position;
-       
+       fin = cruceta.transform.position;
     }
 
     // Update is called once per frame
@@ -41,27 +44,25 @@ public class Botonverde : MonoBehaviour
             }
             else cañon.material.color = Color.white;
         }
-
-       
-
     }
 
     public void OnMouseDown()
     {
 
         balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
-        balapos = balaInstancia.transform.position;
-        dist = Vector3.Distance(inicio, balapos);
 
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
 
         balaInstancia.GetComponent<Renderer>().material.color = Color.black;
-        balaInstancia.GetComponent<Rigidbody>().AddForce(new Vector3(0, fuerza, fuerza));
+        balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio)* fuerza);
 
         game.IncBalas();
-
     }
 
-    
+    public void OnMouseUp()
+    {
+        game.IncPotencia();
+    }
+
 }
