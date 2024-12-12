@@ -7,28 +7,28 @@ public class Botonverde : MonoBehaviour
 {
     public GameObject bala;
     public int fuerza;
-    GameObject posicion;
+    GameObject posicioninicio;
     int contadorBalas = 0;
     public GameManagerscript game;
     public Renderer cañon;
     GameObject balaInstancia;
     Vector3 inicio;
     Vector3 balapos;
+    GameObject posicionfin;
     float limite = 2f;
     float dist;
 
     // Start is called before the first frame update
     void Start()
     {
-       posicion = GameObject.Find("Posicion");
-       inicio = posicion.transform.position;
-       
+       posicioninicio = GameObject.Find("Posicion inicio");
+       inicio = posicioninicio.transform.position;
+       posicionfin = GameObject.Find("Posicion fin");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         
         if (balaInstancia != null)
         {
@@ -48,14 +48,13 @@ public class Botonverde : MonoBehaviour
     {
 
         balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
-        balapos = balaInstancia.transform.position;
-        dist = Vector3.Distance(inicio, balapos);
+        Vector3 fin = posicionfin.transform.position;
 
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
 
         balaInstancia.GetComponent<Renderer>().material.color = Color.black;
-        balaInstancia.GetComponent<Rigidbody>().AddForce(new Vector3(0, fuerza, fuerza));
+        balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio) * fuerza);
 
         game.IncBalas();
 

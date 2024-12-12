@@ -32,15 +32,6 @@ public class GameManagerscript : MonoBehaviour
         contador.text = numbalas + " balas";
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    GameObject colision = collision.gameObject;
-
-    //    if (colision.name == "nombre")
-    //    {
-    //        Destroy(colision);
-    //    }
-    //    else colision.SetActive(false);
-    //}
+   
 
 }

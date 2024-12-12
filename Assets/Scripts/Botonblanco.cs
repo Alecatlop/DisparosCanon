@@ -7,14 +7,18 @@ using UnityEngine.UIElements;
 public class Botonblanco : MonoBehaviour
 {
     public GameObject bala;
-    GameObject posicion;
+    GameObject posicioninicio;
+    GameObject posicionfin;
+    Vector3 inicio;
+    GameObject final;
     int contadorBalas = 0;
     public GameManagerscript game;
 
     // Start is called before the first frame update
     void Start()
     {
-        posicion = GameObject.Find("Posicion");
+        posicioninicio = GameObject.Find("Posicion inicio");
+        posicionfin = GameObject.Find("Posicion fin");
     }
 
 
@@ -28,16 +32,17 @@ public class Botonblanco : MonoBehaviour
     {
         
         // Disparar Bala
-        Vector3 inicio = posicion.transform.position;
+        Vector3 inicio = posicioninicio.transform.position;
+        Vector3 fin = posicionfin.transform.position;
         Vector3 tamaño = bala.transform.localScale;
         int fuerzarandom = Random.Range(100, 400);
         int colorandom = Random.Range(1, 6);
-        float escalarandom = Random.Range( 0.3f, 2f);
+        float escalarandom = Random.Range( 0.1f, 2f);
         bala.transform.localScale = tamaño * escalarandom;
         GameObject balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
-        balaInstancia.GetComponent<Rigidbody>().AddForce(new Vector3(0, fuerzarandom, fuerzarandom));
+        balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio)*fuerzarandom);
 
 
         if (colorandom == 1)
@@ -59,7 +64,7 @@ public class Botonblanco : MonoBehaviour
         else balaInstancia.GetComponent<Renderer>().material.color = Color.white;
 
 
-        // resetear escala y color del prefab
+        // resetear escala del prefab
         if (escalarandom != 1)
         {
             bala.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
