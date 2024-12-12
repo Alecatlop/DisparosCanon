@@ -32,7 +32,7 @@ public class GameManagerscript : MonoBehaviour
         contador.text = numbalas + " balas";
     }
     // doble click sobre variale nombre variable y boton derecho cmabiar nombre de todas
-    // lookAt funcon para objeto vacio cañon, collider limitar cruceta caiga no salir, 
+    // lookAt funcion para objeto vacio cañon, collider limitar cruceta caiga no salir, 
     // spawn, gamebojects vacios con la posicion de las crucetas mediante tag, en el random el maximo es la lista.length -1 porque se incluye, el transformposition de diana = al random
     // con prefab diana instanciar y destruir cada vez que toque con una bala en una posicion aleatoria 
     // los comandos usar inputsystem, 

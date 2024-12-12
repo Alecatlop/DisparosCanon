@@ -5,39 +5,37 @@ using UnityEngine.Video;
 
 public class Diana : MonoBehaviour
 {
-    int vidas = 2;
-    Renderer colordiana;
+    public GameObject diana;
+    GameObject[] ubi;
+    GameObject bala;
 
     // Start is called before the first frame update
     void Start()
     {
-        colordiana = GetComponent<Renderer>();
+        ubi = GameObject.FindGameObjectsWithTag("ubi");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (vidas < 1)
-        {
-            this.gameObject.transform.Rotate(0, 0, 90 * Time.deltaTime);
-        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (vidas == 0)
+        int spawn = Random.Range(0,ubi.Length -1);
+        Vector3 posicion = ubi[spawn].transform.position;
+        bala = GameObject.Find("Bala");
+
+        if (collision.gameObject.CompareTag("bala"))
         {
+            Destroy(bala);
+            print("destruido");
+            GameObject dianaInstancia = Instantiate(diana, posicion, Quaternion.Euler(90, 0, 0));
             Destroy(gameObject);
         }
-        else if (vidas == 1)
-        {
-            vidas--;
-        }
-        else if (vidas == 2)
-        {
-            colordiana.material.color = Color.white;
-            vidas--;
-        }
+        
     }
    
 }
