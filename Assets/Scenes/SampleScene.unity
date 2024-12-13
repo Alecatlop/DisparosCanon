@@ -748,6 +748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contadorbalas: {fileID: 1136388488}
   contadordianas: {fileID: 1425765736}
+  contadorpotencia: {fileID: 1952587789}
+  referencia: {fileID: 1105936298}
 --- !u!65 &814737519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1220,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bala: {fileID: 7885587176776222075, guid: e3e41e37ecbcfd94db04c1bc06a2d1fb, type: 3}
-  fuerza: 250
+  fuerza: 0
   game: {fileID: 814737518}
   "ca\xF1on": {fileID: 683186499}
 --- !u!1 &1136388486
@@ -1675,7 +1677,7 @@ GameObject:
   - component: {fileID: 1952587790}
   - component: {fileID: 1952587789}
   m_Layer: 5
-  m_Name: Potencia
+  m_Name: Contador Potencia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,7 +1699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -29, y: -13}
+  m_AnchoredPosition: {x: -44, y: -13}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1952587789
@@ -1783,7 +1785,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -8.66449, y: 0, z: -27.245972, w: -1.1567993}
+  m_margin: {x: -8.66449, y: 0, z: -44.45874, w: -1.1567993}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

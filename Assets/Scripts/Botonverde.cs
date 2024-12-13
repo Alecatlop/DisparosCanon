@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using TMPro;
 using UnityEngine;
 
@@ -18,14 +19,13 @@ public class Botonverde : MonoBehaviour
     Vector3 balapos;
     float limite = 2f;
     float dist;
+    bool cargar = false;
 
     // Start is called before the first frame update
     void Start()
     {
        posicion = GameObject.Find("Posicion");
        cruceta = GameObject.Find("cruceta");
-       
-       
     }
 
     // Update is called once per frame
@@ -34,36 +34,47 @@ public class Botonverde : MonoBehaviour
         inicio = posicion.transform.position;
         fin = cruceta.transform.position;
 
-        if (balaInstancia != null)
-        {
-            balapos = balaInstancia.transform.position;
-            dist = Vector3.Distance(inicio, balapos);
+        //if (balaInstancia != null)
+        //{
+        //    balapos = balaInstancia.transform.position;
+        //    dist = Vector3.Distance(inicio, balapos);
 
-            if (dist < limite)
-            {
-                cañon.material.color = Color.red;
-            }
-            else cañon.material.color = Color.white;
-        }
+        //    if (dist < limite)
+        //    {
+        //        cañon.material.color = Color.red;
+        //    }
+        //    else cañon.material.color = Color.white;
+        //}
+
     }
 
     public void OnMouseDown()
     {
-
+        cargar = true;
+        cañon.material.color = Color.red;
+        while (cargar == true)
+        {
+            if (fuerza < 300)
+            {
+                fuerza++;
+                game.IncPotencia();
+            }
+            else cargar = false;
+        }
+    }
+    
+    public void OnMouseUp()
+    {
+        cargar = false;
         balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
 
         balaInstancia.name = "Bala " + contadorBalas;
         contadorBalas++;
 
-        balaInstancia.GetComponent<Renderer>().material.color = Color.black;
-        balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio)* fuerza);
-
+        cañon.material.color = Color.white;
+        balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio) * fuerza);
         game.IncBalas();
-    }
-
-    public void OnMouseUp()
-    {
-        game.IncPotencia();
+        game.DecPotencia();
     }
 
 }
