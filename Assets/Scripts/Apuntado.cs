@@ -11,7 +11,7 @@ public class Apuntado : MonoBehaviour
     public float speed;
     private Vector2 moveinput;
     GameObject cañon;
-    //float minx = -8f, miny = -0.12f, maxx = 8f, maxy = 4f;
+    //float minx = -8f, miny = 0.12f, maxx = 8f, maxy = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,17 +29,17 @@ public class Apuntado : MonoBehaviour
     void OnApuntar(InputValue valor) 
     {
         moveinput = valor.Get<Vector2>();
-        //if (moveinput.x > minx && moveinput.x < maxx && moveinput.y > miny && moveinput.y < maxy)
+        //if (moveinput.x > minx || moveinput.x < maxx || moveinput.y > miny || moveinput.y < maxy)
         //{
         //    rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
         //}
-        
+
         rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        print("hola");
     }
 
 

@@ -24,15 +24,16 @@ public class Botonverde : MonoBehaviour
     {
        posicion = GameObject.Find("Posicion");
        cruceta = GameObject.Find("cruceta");
-       inicio = posicion.transform.position;
-       fin = cruceta.transform.position;
+       
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+        inicio = posicion.transform.position;
+        fin = cruceta.transform.position;
+
         if (balaInstancia != null)
         {
             balapos = balaInstancia.transform.position;

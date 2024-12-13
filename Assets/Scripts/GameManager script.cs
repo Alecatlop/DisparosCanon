@@ -37,7 +37,7 @@ public class GameManagerscript : MonoBehaviour
     public void IncDianas()
     {
         numdianas++;
-        contadorbalas.text = "Dianas: " + numdianas;
+        contadordianas.text = "Dianas: " + numdianas;
     }
 
     public void IncPotencia()

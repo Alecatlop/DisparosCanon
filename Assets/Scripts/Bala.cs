@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-    public GameManagerscript game;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,6 @@ public class Bala : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("diana"))
         {
-            //game.DecBalas();
             Destroy(gameObject);
         }
     }
