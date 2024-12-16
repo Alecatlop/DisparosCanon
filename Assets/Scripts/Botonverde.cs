@@ -16,9 +16,6 @@ public class Botonverde : MonoBehaviour
     GameObject balaInstancia;
     Vector3 inicio;
     Vector3 fin;
-    Vector3 balapos;
-    float limite = 2f;
-    float dist;
     bool cargar = false;
 
     // Start is called before the first frame update
@@ -34,24 +31,6 @@ public class Botonverde : MonoBehaviour
         inicio = posicion.transform.position;
         fin = cruceta.transform.position;
 
-        //if (balaInstancia != null)
-        //{
-        //    balapos = balaInstancia.transform.position;
-        //    dist = Vector3.Distance(inicio, balapos);
-
-        //    if (dist < limite)
-        //    {
-        //        cañon.material.color = Color.red;
-        //    }
-        //    else cañon.material.color = Color.white;
-        //}
-
-    }
-
-    public void OnMouseDown()
-    {
-        cargar = true;
-        cañon.material.color = Color.red;
         while (cargar == true)
         {
             if (fuerza < 300)
@@ -61,6 +40,12 @@ public class Botonverde : MonoBehaviour
             }
             else cargar = false;
         }
+    }
+
+    public void OnMouseDown()
+    {
+        cargar = true;
+        cañon.material.color = Color.red;
     }
     
     public void OnMouseUp()

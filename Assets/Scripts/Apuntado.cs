@@ -9,38 +9,35 @@ public class Apuntado : MonoBehaviour
 {
     Rigidbody rb;
     public float speed;
-    private Vector2 moveinput;
+    //private Vector2 moveinput;
     GameObject cañon;
-    //float minx = -8f, miny = 0.12f, maxx = 8f, maxy = 4f;
+       
 
     // Start is called before the first frame update
     void Start()
     {
        rb = GetComponent<Rigidbody>();
        cañon = GameObject.Find("Padrecañon");
+       
     }
+    private void FixedUpdate()
+    {
+        cañon.transform.LookAt(transform.position);
 
+        transform.position = new Vector3(Mathf.Clamp((transform.position.x), -8.6f, 5.6f), Mathf.Clamp((transform.position.y), 0.1f, 4f));
+        this.transform.position = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, transform.position.y + Input.GetAxisRaw("Vertical") * Time.deltaTime * speed);
+    }
     // Update is called once per frame
     void Update()
     {
-        cañon.transform.LookAt(transform.position);
+        
+        
     }
 
-    void OnApuntar(InputValue valor) 
-    {
-        moveinput = valor.Get<Vector2>();
-        //if (moveinput.x > minx || moveinput.x < maxx || moveinput.y > miny || moveinput.y < maxy)
-        //{
-        //    rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
-        //}
-
-        rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        print("hola");
-    }
-
+    //void OnApuntar(InputValue valor) 
+    //{
+    //    moveinput = valor.Get<Vector2>();
+    //    rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
+    //}
 
 }
