@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bala: {fileID: 7885587176776222075, guid: e3e41e37ecbcfd94db04c1bc06a2d1fb, type: 3}
-  fuerza: 0
+  fuerza: 10
   game: {fileID: 814737518}
   "ca\xF1on": {fileID: 683186499}
 --- !u!1 &1136388486

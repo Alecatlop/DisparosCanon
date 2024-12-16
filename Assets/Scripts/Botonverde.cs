@@ -31,14 +31,13 @@ public class Botonverde : MonoBehaviour
         inicio = posicion.transform.position;
         fin = cruceta.transform.position;
 
-        while (cargar == true)
+        if (cargar == true)
         {
             if (fuerza < 300)
             {
                 fuerza++;
                 game.IncPotencia();
             }
-            else cargar = false;
         }
     }
 

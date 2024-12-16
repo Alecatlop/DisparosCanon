@@ -24,8 +24,11 @@ public class Apuntado : MonoBehaviour
     {
         cañon.transform.LookAt(transform.position);
 
-        transform.position = new Vector3(Mathf.Clamp((transform.position.x), -8.6f, 5.6f), Mathf.Clamp((transform.position.y), 0.1f, 4f));
+
+        this.transform.position = new Vector3(Mathf.Clamp((transform.position.x), -8.6f, 5.6f), Mathf.Clamp((transform.position.y), 0.1f, 4f));
         this.transform.position = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, transform.position.y + Input.GetAxisRaw("Vertical") * Time.deltaTime * speed);
+
+
     }
     // Update is called once per frame
     void Update()
@@ -38,6 +41,7 @@ public class Apuntado : MonoBehaviour
     //{
     //    moveinput = valor.Get<Vector2>();
     //    rb.velocity = new Vector3(moveinput.x * speed, moveinput.y * speed, rb.velocity.z);
+
     //}
 
 }
