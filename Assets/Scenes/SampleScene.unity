@@ -580,7 +580,6 @@ GameObject:
   - component: {fileID: 814737515}
   - component: {fileID: 814737514}
   - component: {fileID: 814737518}
-  - component: {fileID: 814737519}
   m_Layer: 0
   m_Name: Suelo
   m_TagString: Untagged
@@ -691,27 +690,6 @@ MonoBehaviour:
   contadordianas: {fileID: 1425765736}
   contadorpotencia: {fileID: 1952587789}
   referencia: {fileID: 1105936298}
---- !u!65 &814737519
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814737513}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 9.999999, y: 2.89, z: 9.999999}
-  m_Center: {x: 0, y: 1.38, z: 0}
 --- !u!1 &857278421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bala: {fileID: 7885587176776222075, guid: e3e41e37ecbcfd94db04c1bc06a2d1fb, type: 3}
-  fuerza: 10
+  fuerza: 0
   game: {fileID: 814737518}
   "ca\xF1on": {fileID: 683186499}
 --- !u!1 &1136388486
