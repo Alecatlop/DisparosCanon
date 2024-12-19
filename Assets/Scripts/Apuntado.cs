@@ -10,22 +10,23 @@ public class Apuntado : MonoBehaviour
     Rigidbody rb;
     public float speed;
     //private Vector2 moveinput;
-    GameObject cañon;
-       
+    public GameObject cañon;
+    public GameObject cañonbase;
+    
 
     // Start is called before the first frame update
     void Start()
     {
        rb = GetComponent<Rigidbody>();
-       cañon = GameObject.Find("Padrecañon");
+       //cañon = GameObject.Find("Padrecañon2");
        
     }
     private void FixedUpdate()
     {
         cañon.transform.LookAt(transform.position);
 
-
         
+
         transform.position = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, transform.position.y + Input.GetAxisRaw("Vertical") * Time.deltaTime * speed);
         transform.position = new Vector3(Mathf.Clamp((transform.position.x), -8.6f, 5.6f), Mathf.Clamp((transform.position.y), 0.1f, 4f));
 
