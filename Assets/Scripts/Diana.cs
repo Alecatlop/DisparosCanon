@@ -34,7 +34,7 @@ public class Diana : MonoBehaviour
             GameObject dianaInstancia = Instantiate(diana, posicion, Quaternion.Euler(90, 0, 0));
             Destroy(gameObject);
             game.IncDianas();
-            game.DecBalas();
+            game.Tiempoextra();
         }
         
     }

@@ -4,7 +4,7 @@ using System.Diagnostics.Tracing;
 using TMPro;
 using UnityEngine;
 
-public class Botonverde : MonoBehaviour
+public class Boton : MonoBehaviour
 {
     public GameObject bala;
     public int fuerza;
@@ -30,7 +30,7 @@ public class Botonverde : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Mantener()
     {
         inicio = posicion.transform.position;
         fin = cruceta.transform.position;
@@ -49,13 +49,14 @@ public class Botonverde : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
+    public void Apretar()
     {
         cargar = true;
         //cañon.material.color = Color.red;
     }
     
-    public void OnMouseUp()
+
+    public void Soltar()
     {
         cargar = false;
         balaInstancia = Instantiate(bala, inicio, Quaternion.Euler(rotx, roty, rotz));
@@ -70,5 +71,8 @@ public class Botonverde : MonoBehaviour
 
         chispa.Play();
     }
+
+   
+   
 
 }

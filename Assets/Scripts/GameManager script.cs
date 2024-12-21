@@ -8,42 +8,50 @@ public class GameManagerscript : MonoBehaviour
     public TextMeshProUGUI contadorbalas;
     public TextMeshProUGUI contadordianas;
     public TextMeshProUGUI contadorpotencia;
+    public TextMeshProUGUI contadortiempo;
     int numbalas = 0;
     int numdianas = 0;
-    public Botonverde referencia;
+    float numtiempo = 20;
+    public Boton referencia;
+    GameObject estadísticas;
 
     // Start is called before the first frame update
     void Start()
     {
-        referencia = FindObjectOfType<Botonverde>();
+        referencia = FindObjectOfType<Boton>();
+        estadísticas = GameObject.Find("Estadísticas");
+        estadísticas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-    }
+        float segundos = Mathf.FloorToInt(numtiempo % 60);
 
-    public void DecBalas()
-    {
-        if (numbalas >= 0)
+        if (numtiempo > 0)
         {
-            numbalas--;
+            numtiempo -= Time.deltaTime;
+            contadortiempo.text = "" + segundos;
         }
-
-        contadorbalas.text = "Balas: " + numbalas;
+        else
+        {
+            numtiempo = 0; 
+            contadortiempo.text = "" + segundos;
+            estadísticas.SetActive(true);
+            contadorbalas.text = "Balas: " + numbalas;
+            contadordianas.text = "Dianas: " + numdianas;
+        }
+        
     }
 
     public void IncBalas()
     {
         numbalas++;
-        contadorbalas.text = "Balas: " + numbalas;
     }
 
     public void IncDianas()
     {
         numdianas++;
-        contadordianas.text = "Dianas: " + numdianas;
     }
 
     public void IncPotencia()
@@ -57,6 +65,12 @@ public class GameManagerscript : MonoBehaviour
         contadorpotencia.color = Color.white;
         referencia.fuerza = 0;
         contadorpotencia.text = "Potencia: " + referencia.fuerza;
+    }
+
+    public void Tiempoextra()
+    {
+        numtiempo += 3;
+        contadortiempo.text = "" + numtiempo;
     }
 
 }
