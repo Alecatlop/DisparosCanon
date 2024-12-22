@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerscript : MonoBehaviour
 {
@@ -14,13 +15,14 @@ public class GameManagerscript : MonoBehaviour
     private GameObject derrota;
     float numbalas = 0;
     float numdianas = 0;
-    float numtiempo = 10;
+    public float numtiempo = 0;
     float precision = 0;
     public Boton referencia;
     GameObject estadísticas;
     GameObject diana;
     GameObject puntero;
     GameObject boton;
+    Dificultad nivel;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,20 @@ public class GameManagerscript : MonoBehaviour
         estadísticas.SetActive(false);
         victoria.SetActive(false);
         derrota.SetActive(false);
+        nivel = GameObject.Find("Persistente").GetComponent<Dificultad>();
+
+        if (nivel.nivelfacil == true)
+        {
+            numtiempo = 20;
+        }
+        if (nivel.niveldificil == true)
+        {
+            numtiempo = 10;
+        }
+    }
+
+    private void Awake()
+    {
         
     }
 
@@ -42,6 +58,7 @@ public class GameManagerscript : MonoBehaviour
     void Update()
     {
         
+
         float segundos = Mathf.FloorToInt(numtiempo % 60);
         
         if (numtiempo > 0)
@@ -105,6 +122,11 @@ public class GameManagerscript : MonoBehaviour
             victoria.SetActive(true);
         }
         else derrota.SetActive(true);
+    }
+
+    public void Volver()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }
