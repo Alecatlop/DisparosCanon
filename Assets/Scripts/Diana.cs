@@ -5,15 +5,12 @@ using UnityEngine.Video;
 
 public class Diana : MonoBehaviour
 {
-    public GameObject diana;
-    GameObject[] ubi;
     GameObject bala;
     public GameManagerscript game;
 
     // Start is called before the first frame update
     void Start()
     {
-        ubi = GameObject.FindGameObjectsWithTag("ubi");
         bala = GameObject.Find("Bala");
     }
 
@@ -25,14 +22,13 @@ public class Diana : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        int spawn = Random.Range(0, ubi.Length - 1);
-        Vector3 posicion = ubi[spawn].transform.position;
         
         if (collision.gameObject.CompareTag("bala"))
         {
+            float randx = Random.Range(-7f, 4f);
+            float randy = Random.Range(0.5f, 4f);
+            transform.position = new Vector3(randx, randy,0); 
             //Destroy(bala);
-            GameObject dianaInstancia = Instantiate(diana, posicion, Quaternion.Euler(90, 0, 0));
-            Destroy(gameObject);
             game.IncDianas();
             game.Tiempoextra();
         }
