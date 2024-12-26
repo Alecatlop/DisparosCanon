@@ -7,6 +7,7 @@ public class Diana : MonoBehaviour
 {
     GameObject bala;
     public GameManagerscript game;
+    public AudioSource point;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,10 @@ public class Diana : MonoBehaviour
         
         if (collision.gameObject.CompareTag("bala"))
         {
+            point.Play();
             float randx = Random.Range(-7f, 4f);
             float randy = Random.Range(0.5f, 4f);
             transform.position = new Vector3(randx, randy,0); 
-            //Destroy(bala);
             game.IncDianas();
             game.Tiempoextra();
         }

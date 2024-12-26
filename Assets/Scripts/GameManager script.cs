@@ -22,7 +22,12 @@ public class GameManagerscript : MonoBehaviour
     GameObject diana;
     GameObject puntero;
     GameObject boton;
+    GameObject pausa;
     Dificultad nivel;
+    public AudioSource button;
+    public AudioSource win;
+    public AudioSource defeat;
+    public AudioSource music2;
 
     // Start is called before the first frame update
     void Start()
@@ -32,27 +37,31 @@ public class GameManagerscript : MonoBehaviour
         derrota = GameObject.Find("Derrota");
         estadísticas = GameObject.Find("Estadísticas");
         diana = GameObject.Find("Diana");
-        puntero = GameObject.Find("cruceta");
+        puntero = GameObject.Find("Mira");
+        pausa = GameObject.Find("Pausa");
         boton = GameObject.Find("Boton");
         estadísticas.SetActive(false);
         victoria.SetActive(false);
         derrota.SetActive(false);
+        pausa.SetActive(false);
         nivel = GameObject.Find("Persistente").GetComponent<Dificultad>();
+
+        
 
         if (nivel.nivelfacil == true)
         {
             numtiempo = 20;
+            music2.volume = 1f;
+            music2.pitch = 1f;
         }
         if (nivel.niveldificil == true)
         {
-            numtiempo = 10;
+            numtiempo = 15;
+            music2.volume = 1f;
+            music2.pitch = 1.2f;
         }
     }
 
-    private void Awake()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -79,11 +88,18 @@ public class GameManagerscript : MonoBehaviour
             
             precision = (numdianas / numbalas) * 100;
             float redondeo = Mathf.FloorToInt(precision % 100);
-            contadorprecisión.text = "Precisión: " + redondeo + "%";
+            contadorprecisión.text = "Precision: " + redondeo + "%";
             Final();
         }
 
-        
+        if (Input.GetKey(KeyCode.Escape) && numtiempo > 0)
+        {
+            music2.volume = 0.5f;
+            music2.pitch = 0.9f;
+            Time.timeScale = 0;
+            pausa.SetActive(true);
+        }
+
     }
 
     public void IncBalas()
@@ -111,7 +127,17 @@ public class GameManagerscript : MonoBehaviour
 
     public void Tiempoextra()
     {
-        numtiempo += 3;
+        if (nivel.nivelfacil == true)
+        {
+            numtiempo += 3;
+            music2.pitch = 1f;
+        }
+        if (nivel.niveldificil == true)
+        {
+            music2.pitch = 1.2f;
+            numtiempo ++;
+        }
+        
         contadortiempo.text = "" + numtiempo;
     }
 
@@ -119,14 +145,40 @@ public class GameManagerscript : MonoBehaviour
     {
         if (precision > 50f && numdianas > 10)
         {
+            win.Play();
             victoria.SetActive(true);
         }
-        else derrota.SetActive(true);
+        else 
+        {
+            defeat.Play();
+            derrota.SetActive(true);
+        }
     }
 
     public void Volver()
     {
+        button.Play();
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Continuar()
+    {
+        if (nivel.nivelfacil == true)
+        {
+            
+            music2.volume = 1f;
+            music2.pitch = 1f;
+        }
+        if (nivel.niveldificil == true)
+        {
+            music2.volume = 1f;
+            music2.pitch = 1.2f;
+        }
+        
+        button.Play();
+        Time.timeScale = 1;
+        pausa.SetActive(false);
     }
 
 }

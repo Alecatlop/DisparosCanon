@@ -12,7 +12,6 @@ public class Boton : MonoBehaviour
     GameObject cruceta;
     int contadorBalas = 0;
     public GameManagerscript game;
-    //public Renderer cañon;
     GameObject balaInstancia;
     Vector3 inicio;
     Vector3 fin;
@@ -21,12 +20,13 @@ public class Boton : MonoBehaviour
     float rotx = 90;
     float roty = 90;
     float rotz = 0;
+    public AudioSource cannon;
 
     // Start is called before the first frame update
     void Start()
     {
        posicion = GameObject.Find("Posicion2");
-       cruceta = GameObject.Find("cruceta");
+       cruceta = GameObject.Find("Mira");
     }
 
     // Update is called once per frame
@@ -52,7 +52,6 @@ public class Boton : MonoBehaviour
     public void Apretar()
     {
         cargar = true;
-        //cañon.material.color = Color.red;
     }
     
 
@@ -64,12 +63,12 @@ public class Boton : MonoBehaviour
         balaInstancia.name = "Bullet00" + contadorBalas;
         contadorBalas++;
 
-        //cañon.material.color = Color.white;
         balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio) * fuerza);
         game.IncBalas();
         game.DecPotencia();
 
         chispa.Play();
+        cannon.Play();
     }
 
    

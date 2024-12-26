@@ -13,6 +13,7 @@ public class Apuntado : MonoBehaviour
     public float speed;
     public GameObject cañon;
     public GameObject cañonbase;
+    float rotationy = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,23 +34,24 @@ public class Apuntado : MonoBehaviour
         transform.position = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, transform.position.y + Input.GetAxisRaw("Vertical") * Time.deltaTime * speed);
         transform.position = new Vector3(Mathf.Clamp((transform.position.x), -8.6f, 5.6f), Mathf.Clamp((transform.position.y), 0.1f, 4f));
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            if (cañonbase.transform.rotation.y > -45)
-            {
-                cañonbase.transform.Rotate(new Vector3(0, -7f, 0) * Time.deltaTime * speed);
-            }
+        //if (cañonbase.transform.rotation.eulerAngles.y > -45f || cañonbase.transform.rotation.eulerAngles.y < 45f)
+        //{
+        //    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        //    {
+        //        cañonbase.transform.Rotate(new Vector3(0, -7f, 0) * Time.deltaTime * speed);
+        //    }
+        //    else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        //    {
+        //        cañonbase.transform.Rotate(new Vector3(0, 7f, 0) * Time.deltaTime * speed);
+        //    }
+        //}
+        
 
-        }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            if (cañonbase.transform.rotation.y < 45)
-            {
-                cañonbase.transform.Rotate(new Vector3(0, 7f, 0) * Time.deltaTime * speed);
-            }
-        }
+        rotationy += Input.GetAxisRaw("Horizontal") * Time.deltaTime * 67.5f;
+        rotationy = Math.Clamp(rotationy, -45, 45);
 
-        //cañonbase.transform.Rotate(new Vector3(0, transform.rotation.y + Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0));
+        cañonbase.transform.eulerAngles = new Vector3(0, rotationy, 0);
+        
     }
 
 }
