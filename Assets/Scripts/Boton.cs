@@ -25,8 +25,17 @@ public class Boton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       posicion = GameObject.Find("Posicion2");
-       cruceta = GameObject.Find("Mira");
+        posicion = GameObject.Find("Posicion");
+        cruceta = GameObject.Find("Mira");
+    }
+
+    private void Update()
+    {
+        //rotx = posicion.transform.rotation.x;
+        //roty = posicion.transform.rotation.y;
+        //rotz = posicion.transform.rotation.z;
+
+        //bala.transform.LookAt(fin);
     }
 
     // Update is called once per frame
@@ -34,10 +43,6 @@ public class Boton : MonoBehaviour
     {
         inicio = posicion.transform.position;
         fin = cruceta.transform.position;
-
-        rotx = posicion.transform.rotation.x;
-        roty = posicion.transform.rotation.y;
-        rotz = posicion.transform.rotation.z;
 
         if (cargar == true)
         {
@@ -58,9 +63,10 @@ public class Boton : MonoBehaviour
     public void Soltar()
     {
         cargar = false;
-        balaInstancia = Instantiate(bala, inicio, Quaternion.Euler(rotx, roty, rotz));
 
-        balaInstancia.name = "Bullet00" + contadorBalas;
+        balaInstancia = Instantiate(bala, inicio, Quaternion.identity);
+
+        balaInstancia.name = "Bala" + contadorBalas;
         contadorBalas++;
 
         balaInstancia.GetComponent<Rigidbody>().AddForce((fin - inicio) * fuerza);
@@ -70,8 +76,5 @@ public class Boton : MonoBehaviour
         chispa.Play();
         cannon.Play();
     }
-
-   
-   
 
 }

@@ -9,16 +9,14 @@ using UnityEngine.UIElements;
 
 public class Apuntado : MonoBehaviour
 {
-    Rigidbody rb;
     public float speed;
     public GameObject cañon;
     public GameObject cañonbase;
-    float rotationy = 0f;
+    float rotbase = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-       rb = GetComponent<Rigidbody>();
        
     }
     private void FixedUpdate()
@@ -47,10 +45,10 @@ public class Apuntado : MonoBehaviour
         //}
         
 
-        rotationy += Input.GetAxisRaw("Horizontal") * Time.deltaTime * 67.5f;
-        rotationy = Math.Clamp(rotationy, -45, 45);
+        rotbase += Input.GetAxisRaw("Horizontal") * Time.deltaTime * 67.5f;
+        rotbase = Math.Clamp(rotbase, -45, 45);
 
-        cañonbase.transform.eulerAngles = new Vector3(0, rotationy, 0);
+        cañonbase.transform.eulerAngles = new Vector3(0, rotbase, 0);
         
     }
 

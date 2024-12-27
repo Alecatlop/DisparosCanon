@@ -87,7 +87,19 @@ public class GameManagerscript : MonoBehaviour
             contadordianas.text = "Dianas: " + numdianas;
             
             precision = (numdianas / numbalas) * 100;
+            
             float redondeo = Mathf.FloorToInt(precision % 100);
+
+
+            if (numdianas == numbalas && numbalas != 0)
+            {
+                redondeo = 100;
+            }
+            else if (numbalas == numdianas && numbalas == 0)
+            {
+                redondeo = 0;
+            }
+
             contadorprecisión.text = "Precision: " + redondeo + "%";
             Final();
         }
@@ -166,7 +178,6 @@ public class GameManagerscript : MonoBehaviour
     {
         if (nivel.nivelfacil == true)
         {
-            
             music2.volume = 1f;
             music2.pitch = 1f;
         }
